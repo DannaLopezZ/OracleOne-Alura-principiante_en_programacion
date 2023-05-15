@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<h1>LOTERIA - ADIVINA EL NUMERO</h1>
+<script>
+
+    function saltarLinea() {
+        document.write("<br>");
+        document.write("<br>");
+        document.write("<br>");
+    }
+    function imprimir(frase) {
+        document.write(frase);
+        saltarLinea();
+    }
+    function sorteo(n){
+      return Math.round(Math.random()*n);
+    }
+
+    var numeroReal = sorteo(20);
+    var numeroUsuario = parseInt(prompt("Ingrese un numero del 1 al 10"))
+
+    if(numeroReal == numeroUsuario){
+      imprimir("Adivinó el numero! ╰(*°▽°*)╯")
+    }else{
+      imprimir("Ese no es el numero `(*>﹏<*)′")
+      imprimir("(*￣3￣)╭  Pista")
+      if(numeroUsuario < numeroReal){
+        imprimir("El numero real es mayor")
+      }else{
+        imprimir("El numero real es menor")
+      }
+    }
+</script>

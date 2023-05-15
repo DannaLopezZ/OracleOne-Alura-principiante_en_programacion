@@ -1,0 +1,37 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+
+  var pantalla = document.querySelector("canvas");
+  var pincel = pantalla.getContext("2d");
+  pincel.fillStyle ="lightgrey";
+  pincel.fillRect(0,0,600,400);
+
+  function designCirculo(x,y,radio){
+    pincel.fillStyle ="blue";
+    pincel.beginPath();
+    pincel.arc(x,y,radio,0,2*Math.PI);
+    pincel.fill();
+  }
+
+  function limpiarPantalla(){
+    pincel.clearRect(0,0,600,400); //Funcion para limpiar el canva en las coordenadas especificadas
+  }
+
+  var i =0;
+  var retornar = false;
+
+  function actualizarPantalla(){
+    limpiarPantalla();
+    designCirculo(i,20,10);
+    if(i<=600 && !retornar){i++;}
+    else{
+      retornar = true;
+      i--;
+      if(i == 0){retornar = false;}
+    }
+  }
+
+    setInterval(actualizarPantalla,5);
+
+</script>

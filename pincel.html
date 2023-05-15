@@ -1,0 +1,76 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+    var pantalla = document.querySelector('canvas');
+    var pincel = pantalla.getContext('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+
+
+    var puedoDibujar = false; //Esta variable se activa solo cuando esta presionado el btn izquierdo
+    var color;
+
+    function dibujarCirculo(x,y) {
+      if(puedoDibujar) {//Si es verdadera...
+          pincel.fillStyle = color;
+          pincel.beginPath();
+          pincel.arc(x, y, 5, 0, 2 * Math.PI); //Se dibuja un circulo en la posicion del puntero
+          pincel.fill();
+      }
+    }
+
+    function puedeDibujarArea(x,y){
+        if (x >= 0 && x <= 150 && y >=0 && y < 50) {
+            return false;
+        }else{return true;}
+
+    }
+
+    function posicionMouse(evento){
+      var x = evento.pageX - pantalla.offsetLeft;
+      var y = evento.pageY - pantalla.offsetTop;
+      if(puedeDibujarArea){dibujarCirculo(x,y);}
+    }
+
+    pantalla.onmousemove = posicionMouse; //Permite capturar el movimiento del mouse
+
+    function habilitarDibujar() {
+      puedoDibujar = true;
+    }
+
+    function deshabilitarDibujar() {
+        puedoDibujar = false;
+    }
+
+    function paletaDeColores(){
+      pincel.fillStyle = 'red';
+      pincel.fillRect(0, 0, 50, 50);
+      pincel.fillStyle = 'green';
+      pincel.fillRect(50, 0, 50, 50);
+      pincel.fillStyle = 'blue';
+      pincel.fillRect(100, 0, 50, 50);
+    }
+
+    function seleccionarColor(evento){
+      var x = evento.pageX - pantalla.offsetLeft;
+      var y = evento.pageY - pantalla.offsetTop;
+      if(x>=0 && x<=50 && y>=0 && y<=50){
+        color = "red";
+      }
+      if(x>=51 && x<=100 && y>=0 && y<=50){
+        color = "green";
+      }
+      if(x>=101 && x<=150 && y>=0 && y<=50){
+        color = "blue";
+      }
+    }
+
+    paletaDeColores();
+    pantalla.onclick = seleccionarColor;
+    pantalla.onmousedown = habilitarDibujar; //Ejecuta una funcion cuando el mouse esta presionado
+    pantalla.onmouseup = deshabilitarDibujar; //Ejecuta una funcion cuando el mouse esta soltado
+
+
+
+</script>

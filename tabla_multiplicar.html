@@ -1,0 +1,30 @@
+<meta charset="UTF-8">
+<h1>Tablas de multiplicar 🧮</h1>
+<script>
+
+    function saltarLinea() {
+        document.write("<br>");
+        document.write("<br>");
+        document.write("<br>");
+    }
+    function imprimir(frase) {
+        document.write(frase);
+        saltarLinea();
+    }
+
+    var valor = parseInt(prompt("Ingrese un numero"))
+    var contador = 1;
+
+    imprimir("WHILE")
+    while(contador <= 10){
+      imprimir(valor*contador)
+      contador += 1;
+    }
+
+    imprimir("FOR")
+    for(contador = 1; contador <= 10; contador++){
+      imprimir(valor*contador)
+    }
+
+
+</script>

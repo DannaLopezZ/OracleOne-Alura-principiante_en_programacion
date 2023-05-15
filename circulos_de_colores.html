@@ -1,0 +1,41 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+
+/*Este programa dibuja circulos al dar clik izquierdo en una parte del canva, cuando damos click derecho se
+  ejecuta internamente un cambio de color para que el proximo clik izquierdo dibuje un circulo de otro color.
+  El orden de colores es siempre el mismo: azul--> rojo--> verde
+*/
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    pincel.fillStyle = "grey";
+    pincel.fillRect(0,0,600,400);
+
+    var colores = ["blue", "red", "green"];
+    console.log(colores.length);
+    var indiceColor = 0; //Iniciamos siempre con el azul
+
+    function dibujarCirculo(evento){
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+        pincel.fillStyle = colores[indiceColor]; //El parametro de color depende de lo que este en el arreglo en el indice actual
+        pincel.beginPath();
+        pincel.arc(x,y,10,0,2*3.14);
+        pincel.fill();
+        console.log(x + "," + y);
+    }
+
+    pantalla.onclick = dibujarCirculo;
+
+    function alterarColor() {
+        if(indiceColor >= colores.length){//Se verifica si indiceColor actualmente tiene el valor del ultimo indice ( o sea 2)
+          indiceColor = 0; //Si indiceColor = 2, entonces lo volvemos a inicializar en 0
+        }else{
+          indiceColor++; //Si no, aumentamos en 1 el valor de indiceColor
+        }
+        return false; //Este false sirve para que el click derecho no ejecute su funcion por defecto que es desplegar un menu, si no que solp realice lo que esta indicado dentro de la funcion alterarColor
+    }
+
+    pantalla.oncontextmenu = alterarColor; //Cada vez que clickamos el btn derecho, se ejectuta la funcion alterarColor
+
+</script>

@@ -1,0 +1,59 @@
+body{
+    
+}
+
+.principal{
+    background-color: #dee9e9;
+    padding: 40px;
+}
+
+#banner{ /*el # sirve para referencial un id (identificador) */
+    width: 100%;
+}
+
+
+h1{
+    text-align: center;
+    font-size: 100px;
+    height: 150px;
+    border: 10px solid #000000;
+    padding: 20px; /*Margen interno*/
+    margin: 40px; /*Margen externo*/
+}
+
+p{
+    text-align: center;
+}
+
+em strong{
+    color: #0b398e;
+}
+
+#mision{
+    font-size: 20px;
+}
+
+.diferenciales{
+    color: #d9dbe2;
+    background: #161d1e;
+    padding: 40px;
+}
+
+.titulo-centrado{
+    text-align: center;
+}
+
+.items{ /*el . sirve para referenciar a una clase*/
+    font-style: italic;
+}
+
+ul{
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin-right: 15%;
+}
+
+.imagenDiferenciales{
+    width: 50%;
+}
